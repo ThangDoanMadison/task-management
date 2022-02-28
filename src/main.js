@@ -1,5 +1,7 @@
-import { createApp } from "vue";
+import "../node_modules/@fortawesome/fontawesome-free/js/all";
+
 import App from "./App.vue";
+import { createApp } from "vue";
 import router from "./router";
 
 createApp(App).use(router).mount("#app");
