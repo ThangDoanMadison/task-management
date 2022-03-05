@@ -1,8 +1,8 @@
 <template>
   <h1>Task List</h1>
-  <div class="search-wrapper">
-    <label>Search title:</label>
-    <input type="text" v-model="search" placeholder="Search title.." />
+  <div class="">
+    <label>Filter Task</label>
+    <input type="text" v-model="search" placeholder="Filter task...." />
   </div>
   <TaskCreate :itemEdit="taskEdit" @save="clickSave" />
   <table id="task" class="table">
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in list" :key="item.id">
+      <tr v-for="item in filteredTasks" :key="item.id">
         <td>
           <input type="checkbox" id="checkbox" v-model="checked" />
         </td>
@@ -55,15 +55,15 @@
 <script>
 import TaskCreate from "./TaskCreate";
 export default {
-  computed: {
-    filteredList() {
-      return this.list.filter((item) => {
-        return item.name.toLowerCase().includes(this.search.toLowerCase());
-      });
-    },
-  },
   components: {
     TaskCreate,
+  },
+  computed: {
+    filteredTasks() {
+      return this.list.filter((element) => {
+        return element.match(this.filterTask);
+      })
+    }
   },
   methods: {
     clickSave(itemSave) {
@@ -98,7 +98,7 @@ export default {
   },
   data() {
     return {
-      search: "",
+      filterTask:'',
       // checked: false,
       taskEdit: {},
       list: [
