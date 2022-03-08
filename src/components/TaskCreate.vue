@@ -1,36 +1,38 @@
 <template>
-  <div>
-    <label for>Name:</label>
-    <input v-model="task.name" />
+  <div class="task-create">
+    <div>
+      <label for>Name:</label>
+      <input v-model="task.name" />
+    </div>
+    <div>
+      <label for>Status:</label>
+      <!-- <input v-model="task.status" /> -->
+      <select v-model="task.status">
+        <option disabled value>Please select one</option>
+        <option>Not started</option>
+        <option>Pending</option>
+        <option>In progress</option>
+        <option>Delayed</option>
+        <option>Done</option>
+      </select>
+    </div>
+    <div>
+      <label for>Deadline:</label>
+      <input type="date" v-model="task.deadline" />
+    </div>
+    <div>
+      <label for>Priority:</label>
+      <!-- <input v-model="task.priority" /> -->
+      <select v-model="task.priority">
+        <option disabled value>Please select one</option>
+        <option>Critical</option>
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+    </div>
+    <button @click="clickAdd">Add</button>
   </div>
-  <div>
-    <label for>Status:</label>
-    <!-- <input v-model="task.status" /> -->
-    <select v-model="task.status">
-      <option disabled value>Please select one</option>
-      <option>Not started</option>
-      <option>Pending</option>
-      <option>In progress</option>
-      <option>Delayed</option>
-      <option>Done</option>
-    </select>
-  </div>
-  <div>
-    <label for>Deadline:</label>
-    <input type="date" v-model="task.deadline" />
-  </div>
-  <div>
-    <label for>Priority:</label>
-    <!-- <input v-model="task.priority" /> -->
-    <select v-model="task.priority">
-      <option disabled value>Please select one</option>
-      <option>Critical</option>
-      <option>High</option>
-      <option>Medium</option>
-      <option>Low</option>
-    </select>
-  </div>
-  <button @click="clickAdd">Add</button>
 </template>
 
 <script>
